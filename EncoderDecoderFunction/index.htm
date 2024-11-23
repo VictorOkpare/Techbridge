@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Encoder and Decoder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    textarea, button {
+      width: 90%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reverse Encoder and Decoder</h1>
+    <p>Enter text to encode or decode using reverse mapping (a ⇄ z, b ⇄ y).</p>
+    <textarea id="inputText" placeholder="Enter text..."></textarea>
+    <button onclick="handleEncodeDecode()">Encode/Decode</button>
+    <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+  </div>
+
+  <script>
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    function reverseEncodeDecode(text) {
+      let result = "";
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const lowerChar = char.toLowerCase(); // Handle both uppercase and lowercase
+        if (alphabet.includes(lowerChar)) {
+          
+            
+          const index = alphabet.indexOf(lowerChar);
+          const reverseChar = alphabet[alphabet.length - 1 - index];
+          
+          result += char === lowerChar ? reverseChar : reverseChar.toUpperCase();
+        } else {
+         
+          result += char;
+        }
+      }
+      return result;
+    }
+
+    
+    function handleEncodeDecode() {
+      const input = document.getElementById("inputText").value;
+      const output = reverseEncodeDecode(input);
+      document.getElementById("outputText").value = output;
+    }
+  </script>
+</body>
+</html>

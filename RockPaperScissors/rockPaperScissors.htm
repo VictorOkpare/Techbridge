@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #e6f7ff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0056b3;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px 0;
+      border: 2px solid #ff6666;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff6666; /* Light red */
+      color: white;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cc4d4d; /* Darker red */
+      transform: scale(1.05);
+    }
+
+    .choices button {
+      background-color: #4da6ff; /* Light blue */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .choices button:hover {
+      background-color: #0056b3; /* Dark blue */
+      transform: scale(1.05);
+    }
+
+    .result, .overall-result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors - Single Player</h1>
+
+  <!-- Player Name Input -->
+  <div class="player-names">
+    <p class="fade-in">Enter Your Name:</p>
+    <input type="text" id="player-name" placeholder="Your Name">
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+
+  <div class="choices hidden">
+    <p id="turn-indicator" class="fade-in"></p>
+    <p id="rounds-played" class="fade-in">Rounds Played: 0</p>
+    <button onclick="makeChoice('rock')">Rock</button>
+    <button onclick="makeChoice('paper')">Paper</button>
+    <button onclick="makeChoice('scissors')">Scissors</button>
+  </div>
+
+  <!-- Result Display  -->
+  <div class="result hidden">
+    <p id="player-choice" class="fade-in"></p>
+    <p id="computer-choice" class="fade-in"></p>
+    <p id="round-winner" class="fade-in"></p>
+    <p id="scoreboard" class="fade-in"></p>
+  </div>
+
+  <!-- Overall Result -->
+  <div class="overall-result hidden">
+    <h2 id="overall-winner" class="fade-in"></h2>
+    <button onclick="restartGame()">Play Again</button>
+  </div>
+
+  <script>
+    let playerName = 'Player';
+    let playerChoice = '';
+    let computerChoice = '';
+    let round = 0;
+    let playerWins = 0;
+    let computerWins = 0;
+    const totalRounds = 5;
+
+    function startGame() {
+      // Get player name
+      const pName = document.getElementById('player-name').value.trim();
+      if (pName) playerName = pName;
+
+      // Hide name input and show choices
+      document.querySelector('.player-names').classList.add('hidden');
+      document.querySelector('.choices').classList.remove('hidden');
+      updateTurnIndicator();
+    }
+
+    function updateTurnIndicator() {
+      document.getElementById('turn-indicator').innerText = `${playerName}, make your choice!`;
+      document.getElementById('rounds-played').innerText = `Rounds Played: ${round}`;
+    }
+
+    function makeChoice(choice) {
+      playerChoice = choice;
+      computerChoice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
+      determineRoundWinner();
+    }
+
+    function determineRoundWinner() {
+      round++;
+      document.getElementById('player-choice').innerText = `${playerName} chose: ${playerChoice}`;
+      document.getElementById('computer-choice').innerText = `Computer chose: ${computerChoice}`;
+
+      let winner = '';
+      if (playerChoice === computerChoice) {
+        winner = "It's a tie!";
+      } else if (
+        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper') ||
+        (playerChoice === 'paper' && computerChoice === 'rock')
+      ) {
+        winner = `${playerName} wins this round!`;
+        playerWins++;
+      } else {
+        winner = `Computer wins this round!`;
+        computerWins++;
+      }
+
+      document.getElementById('round-winner').innerText = winner;
+      document.getElementById('scoreboard').innerText = `Score: ${playerName} - ${playerWins}, Computer - ${computerWins}`;
+      document.querySelector('.result').classList.remove('hidden');
+
+      if (round === totalRounds) {
+        determineOverallWinner();
+      } else {
+        updateTurnIndicator();
+      }
+    }
+
+    function determineOverallWinner() {
+      document.querySelector('.choices').classList.add('hidden');
+      document.querySelector('.result').classList.add('hidden');
+      document.querySelector('.overall-result').classList.remove('hidden');
+
+      let overallWinner = '';
+      if (playerWins > computerWins) {
+        overallWinner = `${playerName} is the champion! 🎉`;
+      } else if (computerWins > playerWins) {
+        overallWinner = `Computer is the champion! 🎉`;
+      } else {
+        overallWinner = "It's a tie! 🤝";
+      }
+
+      document.getElementById('overall-winner').innerText = overallWinner;
+    }
+
+    function restartGame() {
+      round = 0;
+      playerWins = 0;
+      computerWins = 0;
+      playerChoice = '';
+      computerChoice = '';
+
+      document.querySelector('.result').classList.add('hidden');
+      document.querySelector('.overall-result').classList.add('hidden');
+      document.querySelector('.choices').classList.remove('hidden');
+      updateTurnIndicator();
+    }
+  </script>
+</body>
+</html>
