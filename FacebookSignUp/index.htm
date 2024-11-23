@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up for Facebook</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div >
+        <div><img src="./logo.svg" alt=""></div>
+        <div class="main-ctn">
+        
+        <span>
+            <h1 class="heading-text">Create a new account</h1>
+            <p class="lower-heading-text">Its quick and easy</p>
+        </span>
+        <form action="#">
+            <div class="ctn name-ctn">
+                <input type="text" placeholder="First name">
+                <input type="text" placeholder="Surname">
+            </div>
+            <div>
+                <p>Date of birth <span>?</span></p>
+                <select id="day" name="day">
+                </select>
+        
+                <select id="month" name="month">
+                </select>
+        
+                <select id="year" name="year">        
+                </select>
+
+            </div>
+            <div>
+                <p>Gender <span>?</span></p>
+
+                <div class="gender-radio" > Female <input type="radio" name="gender"></div>
+                <div class="gender-radio">Male <input type="radio" name="gender"></div>
+                <div class="gender-radio">Custom <input type="radio" name="gender"></div>
+            </div>
+            <div>
+                <input type="text">
+                <input type="password">
+            </div>
+            <div> 
+                People who use our service may have uploaded your contact information to Facebook. Learn more.
+
+                By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS notifications from us and can opt out at any time.
+            </div>
+            <div>
+                <button></button>
+                <p><a>Already have an account</a></p>
+            </div>
+
+        </form>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            populateMonths();
+            populateDays();
+            populateYears();
+        
+            // Add event listener to update days when month is changed
+            document.getElementById("month").addEventListener("change", populateDays);
+        });
+        
+        
+        function populateMonths() {
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+        
+            const monthSelect = document.getElementById("month");
+            months.forEach((month, index) => {
+                const option = document.createElement("option");
+                option.value = index + 1;
+                option.textContent = month;
+                monthSelect.appendChild(option);
+            });
+        }
+        
+        
+        function populateDays() {
+            const daySelect = document.getElementById("day");
+            const month = parseInt(document.getElementById("month").value);
+            const year = parseInt(document.getElementById("year").value);
+            const daysInMonth = new Date(year, month, 0).getDate();
+        
+            
+            daySelect.innerHTML = '';
+        
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const option = document.createElement("option");
+                option.value = day;
+                option.textContent = day;
+                daySelect.appendChild(option);
+            }
+        }
+        
+        
+        function populateYears() {
+            const yearSelect = document.getElementById("year");
+            const currentYear = new Date().getFullYear();
+            const startYear = 1900;
+        
+            for (let year = currentYear; year >= startYear; year--) {
+                const option = document.createElement("option");
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

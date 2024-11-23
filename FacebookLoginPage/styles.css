@@ -100,3 +100,26 @@ form{
     font-size: 20px;
     
 }
+
+@media (max-width:1120px){
+    .main-ctn{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: calc(100%);
+        justify-items: center;
+        margin-top: 5vh;
+        margin-left: 25vw;
+    
+    }
+    .left-ctn{
+        margin-left: 0px;
+    }
+
+    form{
+        margin-left: 32px;
+    }
+
+    .left-ctn>img{
+        align-self: center;
+    }
+}

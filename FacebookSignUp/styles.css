@@ -1,0 +1,51 @@
+
+*{
+    margin: 0px;
+}
+body{
+    background-color: #f2f4f7;
+    display: flex;
+    justify-content: center ;
+    font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}
+
+div>img{
+    width: 25vw;
+    display: flex;
+    justify-self:center;
+}
+
+.main-ctn{
+    background-color: white;
+    width: 35vw;
+    border-radius: 6px;
+    
+    
+}
+.ctn{
+    padding: 20px;
+}
+.heading-text{
+    text-align: center;
+    font-size:32px;
+    
+}
+
+.lower-heading-text{
+    color: grey;
+    text-align: center;
+    margin: 10px;
+}
+
+form{
+    border-top: 1px solid;
+    border-color: rgb(218, 218, 218);
+    padding-top:10px
+}
+
+.name-ctn>input{
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(218, 218, 218);
+    width: 13vw;
+}
