@@ -49,6 +49,10 @@ width: 100px;
 
 .lower-navbar-ctn{
     background-color: #94004f;
+    padding: 10px;
+    font-size: small;
+    font-weight: 500;
+    font-family: Helvetica;
 
 }
 ul{
@@ -61,4 +65,20 @@ ul{
     padding: 0px;
    
     
+}
+.hero-ctn{
+    height:85vh;
+    width: 100vw;
+}
+.hero-ctn>img{
+    height:100% ;
+    width: 100%;
+}
+.treasure-ctn{
+    height:45vh;
+    width:100vw;
+}
+.treasure-ctn>a>img{
+    height: 100%;
+    width: 100%;
 }
