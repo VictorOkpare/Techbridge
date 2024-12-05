@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Cat Fact</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #cat-fact {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Cat Fact</h1>
+  <button id="fetch-fact">Get Cat Fact</button>
+  <div id="cat-fact"></div>
+
+  <script>
+    // JavaScript code
+    document.getElementById("fetch-fact").addEventListener("click", function() {
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+      
+      // API endpoint
+      const url = "https://catfact.ninja/fact";
+
+      // Open a GET request
+      xhr.open("GET", url, true);
+
+      // Set up a callback to handle the response
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          const fact = response.fact;
+
+          // Display the cat fact
+          document.getElementById("cat-fact").innerText = fact;
+        } else {
+          document.getElementById("cat-fact").innerText = "Failed to fetch a cat fact. Please try again.";
+        }
+      };
+
+      // Handle network errors
+      xhr.onerror = function() {
+        document.getElementById("cat-fact").innerText = "Network error. Please check your connection.";
+      };
+
+      // Send the request
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
