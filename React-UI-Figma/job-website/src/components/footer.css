@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+hr{
+    border: 1px solid;
+    color: #e5e5e5;
+    width: 90%;
+    margin: 0px;
+}
+footer{
+    display: flex;
+    /* border-top:1px solid #d5d2d2 ; */
+    flex-direction: column;
+    color: #3F403F;
+    margin-bottom: 33px;
+    
+}
+
+h3{
+    font-family: "Nunito", sans-serif;
+    font-size:20px;
+}
+
+.upperdiv{
+    display: flex;
+    gap:62px;
+
+}
+.div1{
+    width:320px;
+}
+
+.div1>p{
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+}
+
+ul{
+   
+    padding:0px
+}
+.div2>ul>li{
+    
+    list-style: none;
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    
+    padding: 8px;
+    ;
+}
+
+.lowerdiv{
+    color:#9B9B9B;
+    font-size:14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+
+    
+
+
+}
+.lowerdiv>p{
+  
+}
+
+.icon{
+    border-radius: 50%;
+    padding: 16px;
+    font-size:18px;
+    color: rgb(6, 148, 42) ;
+    background-color: rgb(6, 148, 42, 0.1) ;
+    margin-right: 10px;
+    
+}

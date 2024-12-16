@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.banner-ctn{
+    background-image:url("../assets/images/banner.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width:90%;
+    height:367px;
+    color: white;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    
+    
+    
+}
+
+.banner-ctn>div{
+    /* background-color: white; */
+    width: 637px;
+    margin-left: auto;
+    /* margin-top: 200px */
+    padding-top: 50px;
+    
+}
+.banner-ctn>div>h1{
+    font-size: 48px;
+    font-weight: 700;
+    font-family: Nunito, sans-serif;
+    margin-bottom: 0px;
+    padding-bottom:0px;
+
+}
+
+.banner-ctn>div>p{
+    font-family: "Work Sans";
+    margin-bottom:32px;
+}
+.banner-ctn>div>button{
+    background-color: rgb(6, 148, 42);
+    width: 229px;
+    color: white;
+    border-radius:50px;
+    font-size: 18px;
+    padding: 10px 0px;
+    border: none;
+    cursor: pointer;
+    
+}
